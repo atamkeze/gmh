@@ -1,0 +1,171 @@
+ {% extends "base_admin.html.twig" %}
+
+ {% block body %}
+
+ {{ parent() }}
+
+        
+         <div class="page">
+        <div id="page_top" class="section-body top_dark">
+            <div class="container-fluid">
+                <div class="page-header">
+                    <div class="left">
+                        <h1 class="page-title">List Of Fans</h1>                        
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="section-body mt-3">
+            <div class="container-fluid">
+                <div class="row clearfix">
+                    <div class="col-lg-12">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="d-md-flex justify-content-between">
+                                    <ul class="nav nav-tabs b-none">
+                                        <li class="nav-item"><a class="nav-link active" id="list-tab" data-toggle="tab" href="#list"><i class="fa fa-list-ul"></i> List</a></li>
+                                        {# <li class="nav-item"><a class="nav-link" id="grid-tab" data-toggle="tab" href="#grid"><i class="fa fa-th"></i> Grid</a></li> #}
+                                        {# <li class="nav-item"><a class="nav-link" id="addnew-tab" data-toggle="tab" href="#addnew"><i class="fa fa-plus"></i> Add New</a></li> #}
+                                    </ul>
+                                    <div class="d-flex align-items-center sort_stat">
+                                        <div class="d-flex">
+                                            <span class="bh_income">2,5,1,8,3,6,7,5,3,6,7,5</span>
+                                            <div class="ml-2">
+                                                <p class="mb-0 font-11">MY INCOME</p>
+                                                <h5 class="font-16 mb-0">$5,510</h5>
+                                            </div>
+                                        </div>
+                                        <div class="d-flex ml-3">
+                                            <span class="bh_traffic">5,8,9,10,5,2,5,8,9,10</span> 
+                                            <div class="ml-2">
+                                                <p class="mb-0 font-11">SITE TRAFFIC</p>
+                                                <h5 class="font-16 mb-0">53% Up</h5>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="input-group mt-2">
+                                    <input type="text" class="form-control search" placeholder="Search...">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="section-body">
+            <div class="container-fluid">
+                <div class="tab-content">
+{% for lf in fans %}
+    {% if lf.roles[0] != "ROLE_ADMIN" and lf.roles[0] != "ROLE_ARTIST" %}
+                    <div class="tab-pane fade show active" id="list" role="tabpanel">
+                        <div class="row clearfix">
+                            <div class="col-lg-12">
+                                <div class="table-responsive" id="users">
+                                    <table class="table table-hover table-vcenter text-nowrap table_custom border-style list">
+                                        <tbody>
+                                            <tr class="">
+                                                <td class="width35 hidden-xs">
+                                                    <a href="javascript:void(0);" class="mail-star"><i class="fa fa-star" title="make artist"></i></a>
+                                                </td>
+                                                <td class="text-center width40">
+                                                    <div class="avatar d-block">
+                                                        <img class="avatar" src="{{asset('images/xs/avatar4.jpg')}}" alt="avatar">
+                                                    </div>
+                                                </td>
+                                                <td>
+                                                    <div><a href="{{path('fan')}}">{{lf.username}}</a></div>
+                                                    <div class="text-muted">+264-625-2583</div>
+                                                </td>
+                                                <td class="hidden-xs">
+                                                    <div class="text-muted">johnsmith@info.com</div>
+                                                </td>
+                                                <td class="hidden-sm">
+                                                    <div class="text-muted">455 S. Airport St. Moncks Corner, SC 29461</div>                                                
+                                                </td>
+                                                 <td class="text-right">
+                                                    <a class="btn btn-sm btn-link" href="javascript:void(0)" data-toggle="tooltip" title="Phone"><i class="fa fa-phone"></i></a>
+                                                    <a class="btn btn-sm btn-link" href="javascript:void(0)" data-toggle="tooltip" title="Mail"><i class="fa fa-envelope"></i></a>
+                                                    <a class="btn btn-sm btn-link hidden-xs js-sweetalert" data-type="confirm" href="javascript:void(0)" data-toggle="tooltip" title="Delete"><i class="fa fa-trash"></i></a>
+                                                </td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+{# Below is the Grid View Of the fans  #}
+                    {# <div class="tab-pane fade" id="grid" role="tabpanel">
+                        <div class="row row-deck">
+                            <div class="col-lg-3 col-md-6 col-sm-12">
+                                <div class="card " >
+                                    <div class="card-body">
+                                        <div class="card-status bg-blue"></div>
+                                        <div class="mb-3"> <img src="{{asset('images/sm/avatar1.jpg')}}" class="rounded-circle w100" alt=""> </div>
+                                        <div class="mb-2">
+                                            <h5 class="mb-0">{{lf.name}}</h5>
+                                            <p class="text-muted">Aalizeethomas@info.com</p>
+                                            <span>Username: <b> {{lf.username}} </b> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aperiam deleniti fugit incidunt</span>
+                                        </div>
+                                        <span class="font-12 text-muted">Common Contact</span>
+                                        <ul class="list-unstyled team-info margin-0 pt-2">
+                                            <li><img src="{{asset('images/xs/avatar1.jpg')}}" alt="Avatar"></li>
+                                            <li><img src="{{asset('images/xs/avatar8.jpg')}}" alt="Avatar"></li>
+                                            <li><img src="{{asset('images/xs/avatar2.jpg')}}" alt="Avatar"></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div> #}
+                    {# <div class="tab-pane fade" id="addnew" role="tabpanel">
+                        <div class="row clearfix">
+                            <div class="col-lg-12">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <div class="row clearfix">
+                                            <div class="col-lg-4 col-md-12">
+                                                <div class="form-group">
+                                                    <input type="text" class="form-control" placeholder="Enter Name">
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-4 col-md-12">
+                                                <div class="form-group">
+                                                    <input type="number" class="form-control" placeholder="Enter Number">
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-4 col-md-12">
+                                                <div class="form-group">
+                                                    <input type="email" class="form-control" placeholder="Enter Email">
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-12 col-md-12">
+                                                <div class="form-group">
+                                                    <textarea type="text" class="form-control" rows="4">Enter your Address</textarea>
+                                                </div>
+                                            </div>
+                                            <div class="col-lg-12">
+                                                <input type="file" class="dropify">
+                                            </div>
+                                            <div class="col-lg-12 mt-3">
+                                                <button type="submit" class="btn btn-primary">Add</button>
+                                                <button type="submit" class="btn btn-default">Cancel</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div> #}
+
+                </div>
+{% endif %}
+{% endfor %}
+            </div>
+        </div>
+    </div>
+
+ {% endblock %}

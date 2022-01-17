@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+        <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
+        <link rel="icon" href="{{ asset('favicon.ico')}}" type="image/x-icon"/>
+
+        <title>{% block title %}Gospel Music Hub{% endblock %}</title>
+
+        {# Run `composer require symfony/webpack-encore-bundle`
+           and uncomment the following Encore helpers to start using Symfony UX #}
+        {% block stylesheets %}
+            {#{{ encore_entry_link_tags('app') }}#}
+            <!-- Bootstrap Core and vandor -->
+            <link rel="stylesheet" href="{{asset('plugins/bootstrap/css/bootstrap.min.css')}}" />
+            <!-- Plugins css -->
+            <link rel="stylesheet" href="{{ asset('plugins/charts-c3/c3.min.css')}}"/>
+            <!-- Core css -->
+            <link rel="stylesheet" href="{{ asset('css/main.css')}}"/>
+            <link rel="stylesheet" href="{{ asset('css/theme1.css')}}"/>
+            {# My Custom CSS #}
+            <link rel="stylesheet" href="{{ asset('css/myStyle.css')}}"/>
+        {% endblock %}
+    </head>
+    <body class="font-montserrat">
+        {% block body %}
+            <!-- Page Loader -->
+                <div class="page-loader-wrapper">
+                    <div class="loader">
+                    </div>
+                </div>
+
+                <div class="auth">
+    <div class="auth_left">
+        <div class="card">
+            <div class="text-center mb-5">
+                <a class="header-brand" href="{{path('home')}}"><i class="fa fa-soccer-ball-o brand-logo"></i></a>
+            </div>
+            <div class="card-body">
+                <div class="card-title">Create Fan account</div>
+
+              <form method="post" action="{{path('app_register_fan')}}">
+                <div class="form-group">
+                <div id="error_msg"></div>
+                    <label class="form-label">Name</label>
+                    <input type="text" name="name" id="name" class="form-control" placeholder="Enter your real name">
+                </div>
+
+                <div class="form-group">
+                    <label class="form-label">Username</label>
+                    <input type="text" name="username" id="username" class="form-control" placeholder="Enter username">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Password</label>
+                    <input type="password" name="pass1" id="pass1" class="form-control" placeholder="Enter Password">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Confirm Password</label>
+                    <input type="password" name="pass2" id="pass2" class="form-control" placeholder="Re-enter Password">
+                </div>
+                <div class="form-group">
+                    <label class="custom-control custom-checkbox">
+                    <input type="checkbox" id="terms" class="custom-control-input" />
+                    <span class="custom-control-label">Agree the <a href="#">terms and policy</a></span>
+                    </label>
+                </div>
+                <div class="form-footer">
+                    <button type="button" id="submit" class="btn btn-primary btn-block">Create new account</button>
+                </div>
+              </form>
+            </div>
+            <div class="text-center text-muted">
+                Already have account? <a href="{{path('app_login')}}">Sign in</a>
+            </div>
+        </div>
+    </div>
+    <div class="auth_right full_img"></div>
+
+    {# Hiiden Fields #}
+    <input type="hidden" id="hidden_field" value="{{path('app_verify_username')}}" />
+    <input type="hidden" id="look_up" value="{{path('look_up')}}" />
+    <input type="hidden" id="app_register_fan" value="{{path('app_register_fan')}}" />
+
+
+    
+               {# <div class="form-group">
+                    <label class="form-label">Email address</label>
+                    <input type="email" class="form-control" placeholder="Enter email">
+                </div>
+                 <div class="form-group">
+                    <label class="form-label">Date Of Birth</label>
+                    <input type="date" class="form-control" >
+                </div> 
+                 <div class="form-group">
+                    <label class="form-label">Residence</label>
+                    <input type="text" class="form-control" placeholder="In What Part Of The country are you?">
+                </div> 
+                <div class="form-group">
+                    <label class="form-label">Gender</label>
+                    <select class="custom-select">
+                        <option>Male</option>
+                        <option>Female</option>
+                    </select>
+                </div> 
+                 <div class="form-group">
+                    <label class="form-label">Upload Profile Picture</label>
+                    <input type="file" class="form-control btn btn-info">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">Upload Cover Photo</label>
+                    <input type="file" class="form-control btn btn-info">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">More info</label>
+                    <textarea class="form-control" placeholder="More about you"></textarea>
+                </div> #}
+</div>
+
+        
+        {% endblock %}   
+
+            {% block javascripts %}
+            {#{{ encore_entry_script_tags('app') }}#}
+
+            <script src="{{ asset('bundles/lib.vendor.bundle.js')}}"></script>
+            <script src="{{ asset('bundles/apexcharts.bundle.js')}}"></script>
+            <script src="{{ asset('bundles/counterup.bundle.js')}}"></script>
+            <script src="{{ asset('bundles/knobjs.bundle.js')}}"></script>
+            <script src="{{ asset('bundles/c3.bundle.js')}}"></script>
+            <script src="{{ asset('js/core.js')}}"></script>
+            <script src="{{ asset('js/page/project-index.js')}}"></script>
+
+        {# myAjaxForm.js is my Custom JS FILE #}
+            <script src="{{ asset('js/form/myAjaxForm.js')}}"></script>
+            {% endblock %} 
+    </body>
+</html>

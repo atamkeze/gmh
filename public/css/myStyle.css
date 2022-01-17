@@ -1,0 +1,8 @@
+/* Background Image For Log In and Sign Up */
+.auth{
+    height:100vh;
+    background-image:url(../images/60322789-chatbot-concept-with-instant-messenger-displayed-on-smart-phone.webp);
+    background-size:cover;
+    background-repeat:no-repeat;
+    background-position:right
+}

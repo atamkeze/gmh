@@ -1,0 +1,10 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Welcoome {{ app.user.name }} {% endblock %}
+
+{% block body %}
+<h1>Welcome: <em> {{app.user.name}} </em></h1>
+<p>Your Username is <em>{{app.user.username}}</em> </p>
+   {{ parent() }}
+
+{% endblock %}
