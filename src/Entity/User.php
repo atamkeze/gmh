@@ -111,6 +111,16 @@ class User implements UserInterface
      */
     private $replyComments;
 
+    /**
+     * @ORM\Column(type="string", length=255, nullable=true)
+     */
+    private $bio;
+
+    /**
+     * @ORM\Column(type="datetime", nullable=true)
+     */
+    private $dob;
+
     public function __construct()
     {
         $this->posts = new ArrayCollection();
@@ -448,6 +458,30 @@ class User implements UserInterface
                 $replyComment->setReplyCommentUser(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getBio(): ?string
+    {
+        return $this->bio;
+    }
+
+    public function setBio(?string $bio): self
+    {
+        $this->bio = $bio;
+
+        return $this;
+    }
+
+    public function getDob(): ?\DateTimeInterface
+    {
+        return $this->dob;
+    }
+
+    public function setDob(?\DateTimeInterface $dob): self
+    {
+        $this->dob = $dob;
 
         return $this;
     }

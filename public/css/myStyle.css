@@ -6,3 +6,11 @@
     background-repeat:no-repeat;
     background-position:right
 }
+
+.cover-photo{
+    height:50vh;
+    background-image:url(../images/sm/avatar2.jpg);
+    background-size:cover;
+    background-repeat:no-repeat;
+    background-position: center;
+}

@@ -7,6 +7,7 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Sensio\Bundle\FrameworkExtraBundle\Configuration\IsGranted;
+use Symfony\Component\BrowserKit\Request;
 
 /**
  * @IsGranted("ROLE_ADMIN")
@@ -44,6 +45,50 @@ class AdminController extends AbstractController
 
         return $this->render('admin/artists/list-artists.html.twig',[
             'artists' => $artists,
+        ]);
+    }
+
+    //VIEW FAN PROFILE
+     /**
+     * @Route("/fan-profile", name="view_fan_profile")
+     */
+    public function view_fan_profile(){
+        $repository = $this->getDoctrine()->getRepository(User::class);
+        $fan = $repository->findAll();
+
+        return $this->render('admin/fans/view-fan-profile.html.twig',[
+            'fan' => $fan,
+        ]);
+    }
+
+    
+    //ADMIN PROFILE
+     /**
+     * @Route("/admin-profile", name="admin_profile")
+     */
+    public function admin_profile(){
+
+        $repository = $this->getDoctrine()->getRepository(User::class);
+        $adminProfile = $repository->findAll();
+
+        $profile_photo = 'dec52418e92a4ee8b9234b376e546917.jpg';
+
+        // $isSuc = false;
+        // $isErr = false;
+
+        // if($request->get('suc')){
+        //     $isSuc = true;
+        // }
+
+        // if($request->get('err')){
+        //     $isErr = true;
+        // }
+
+        return $this->render('admin/admin-pages/admin-profile.html.twig',[
+            'adminProfile' => $adminProfile,
+            'profile_photo' => $profile_photo
+            // 'isSuc' =>$isSuc,
+            // 'isErr' => $isErr,
         ]);
     }
 }

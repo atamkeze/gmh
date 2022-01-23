@@ -18,11 +18,16 @@
             <link rel="stylesheet" href="{{asset('plugins/bootstrap/css/bootstrap.min.css')}}" />
             <link rel="stylesheet" href="{{asset('plugins/sweetalert/sweetalert.css')}}"/>
             <link rel="stylesheet" href="{{asset('plugins/dropify/css/dropify.min.css')}}">
+            <link rel="stylesheet" href="{{asset('plugins/summernote/dist/summernote.css')}}"/>
+            <link rel="stylesheet" href="{{asset('plugins/fullcalendar/fullcalendar.min.css')}}">
+
             <!-- Plugins css -->
             <link rel="stylesheet" href="{{ asset('plugins/charts-c3/c3.min.css')}}"/>
             <!-- Core css -->
             <link rel="stylesheet" href="{{ asset('css/main.css')}}"/>
             <link rel="stylesheet" href="{{ asset('css/theme1.css')}}"/>
+            <link rel="stylesheet" href="{{ asset('css/myStyle.css')}}"/>
+
         {% endblock %}
     </head>
 
@@ -42,7 +47,7 @@
                 <a class="header-brand" href="{{path('look_up')}}"><i class="fa fa-soccer-ball-o brand-logo"></i></a>
                 <div class="dropdown">
                     <a href="javascript:void(0)" class="nav-link user_btn"><img class="avatar" src="{{asset('images/user.png')}}" alt="" data-toggle="tooltip" data-placement="right" title="{{app.user.username}}"/></a>
-                    <a href="page-search.html" class="nav-link icon xs-hide"><i class="fa fa-search" title="Search"></i></a>                    
+                    <a href="#" class="nav-link icon xs-hide"><i class="fa fa-search" title="Search"></i></a>                    
                     <a href="{{path('app_list_artists')}}"  class="nav-link icon xs-hide"><i class="fa fa-id-card-o" title="Artists"></i></a>
                     <a href="{{path('app_list_fans')}}"  class="nav-link icon xs-hide"><i class="fa fa-id-card" title="Fans"></i></a>                    
                     <a href="app-chat.html"  class="nav-link icon xs-hide"><i class="fa fa-comments-o" title="Chat"></i></a>
@@ -224,7 +229,7 @@
         <div class="card-body">
             <a href="page-profile.html"><img class="card-profile-img" src="{{asset('images/sm/avatar1.jpg')}}" alt=""></a>
             <h6 class="mb-0">{{app.user.username}}</h6>
-            <span>peter.richard@gmail.com{{app.user.email}}</span>
+            <span>{{app.user.email}}</span>
             <div class="d-flex align-items-baseline mt-3">
                 <h3 class="mb-0 mr-2">9.8</h3>
                 <p class="mb-0"><span class="text-success">1.6% <i class="fa fa-arrow-up"></i></span></p>
@@ -302,7 +307,7 @@
         <nav id="left-sidebar-nav" class="sidebar-nav">
             <ul class="metismenu">
                 <li class="g_heading">Project</li>
-                <li class="active"><a href="index-2.html"><i class="fa fa-dashboard"></i><span>Dashboard</span></a></li>                        
+                <li class="active"><a href="{{path('admin')}}"><i class="fa fa-dashboard"></i><span>Dashboard</span></a></li>                        
                 <li><a href="{{path('app_list_artists')}}"><i class="fa fa-user"></i><span>Artists</span></a></li>
                 {# <li class="g_heading">App</li> #}
                 <li><a href="{{path('app_list_fans')}}"><i class="fa fa-address-book"></i><span>Fans</span></a></li>
@@ -439,7 +444,7 @@
                             <div class="dropdown d-flex">
                                 <a class="nav-link icon d-none d-md-flex btn btn-default btn-icon ml-2" data-toggle="dropdown"><i class="fa fa-user"></i></a>
                                 <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
-                                    <a class="dropdown-item" href="#"><i class="dropdown-icon fa fa-user"></i> Profile</a>
+                                    <a class="dropdown-item" href="{{path('admin_profile')}}"><i class="dropdown-icon fa fa-user"></i> Profile</a>
                                     <a class="dropdown-item" href="app-setting.html"><i class="dropdown-icon fa fa-settings"></i> Settings</a>
                                     <a class="dropdown-item" href="javascript:void(0)"><span class="float-right"><span class="badge badge-primary">6</span></span><i class="dropdown-icon fa fa-mail"></i> Inbox</a>
                                     <a class="dropdown-item" href="javascript:void(0)"><i class="dropdown-icon fa fa-send"></i> Message</a>
@@ -465,8 +470,16 @@
             <script src="{{ asset('bundles/counterup.bundle.js')}}"></script>
             <script src="{{ asset('bundles/knobjs.bundle.js')}}"></script>
             <script src="{{ asset('bundles/c3.bundle.js')}}"></script>
+            <script src="{{asset('bundles/fullcalendar.bundle.js')}}"></script>
+            <script src="{{asset('bundles/knobjs.bundle.js')}}"></script>
+            <script src="{{asset('bundles/summernote.bundle.js')}}"></script>
+
             <script src="{{ asset('js/core.js')}}"></script>
             <script src="{{ asset('js/page/project-index.js')}}"></script>
+            <script src="{{asset('js/page/summernote.js')}}"></script>
+            <script src="{{asset('js/page/calendar.js')}}"></script>
+            <script src="{{asset('js/chart/knobjs.js')}}"></script>
+
         {% endblock %}
     </body>
 </html>
